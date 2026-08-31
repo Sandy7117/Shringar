@@ -1,0 +1,156 @@
+{{ 'ugs-theme.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  if section.settings.image != blank
+    assign dealer_src = section.settings.image | image_url: width: 1000
+  else
+    assign dealer_name = section.settings.image_asset | default: 'ugs-dealer-image-270cd4.jpg'
+    capture dealer_src
+      render 'ugs-asset', name: dealer_name
+    endcapture
+    assign dealer_src = dealer_src | strip
+  endif
+-%}
+
+<section class="ugs-dealer-wrap ugs-page">
+  <div class="ugs-dealer">
+    {%- if section.settings.title != blank -%}
+      <h2 class="ugs-heading ugs-h2 ugs-dealer__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="ugs-dealer__row">
+      <div class="ugs-dealer__content">
+        <div>
+          {%- if section.settings.text_1 != blank -%}
+            <p class="ugs-body">{{ section.settings.text_1 }}</p>
+          {%- endif -%}
+          {%- if section.settings.text_2 != blank -%}
+            <p class="ugs-body">{{ section.settings.text_2 }}</p>
+          {%- endif -%}
+        </div>
+        <ul class="ugs-dealer__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'benefit' -%}
+              <li {{ block.shopify_attributes }}>
+                <img src="{{ 'ugs-icon-seal-check.svg' | asset_url }}" alt="" width="32" height="32">
+                {{ block.settings.text }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        <div class="ugs-dealer__actions">
+          {%- if section.settings.primary_label != blank -%}
+            <a class="ugs-btn ugs-btn--blue" href="{{ section.settings.primary_link | default: '#' }}">
+              {{ section.settings.primary_label }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.secondary_label != blank -%}
+            <a class="ugs-btn ugs-btn--outline-blue" href="{{ section.settings.secondary_link | default: '#' }}">
+              {{ section.settings.secondary_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+      <img class="ugs-dealer__image" src="{{ dealer_src }}" alt="" width="505" height="400" loading="lazy">
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UGS Become a Dealer",
+  "tag": "section",
+  "class": "ugs-page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Become a United Global Solar Dealer"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Paragraph 1",
+      "default": "Expand your business with premium solar products, competitive wholesale pricing, and dedicated dealer support designed to help you grow."
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Paragraph 2",
+      "default": "Whether you're an installer, contractor, distributor, or retailer, our team is ready to provide the products, pricing, and expertise you need to succeed."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_asset",
+      "label": "Theme image filename",
+      "default": "ugs-dealer-image-270cd4.jpg"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button",
+      "default": "Become a Dealer"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button",
+      "default": "View Dealer Benefits"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Access exclusive dealer pricing and volume discounts"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGS Become a Dealer",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Access exclusive dealer pricing and volume discounts"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Partner with trusted Tier-1 solar brands"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "text": "Receive dedicated sales and technical support"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

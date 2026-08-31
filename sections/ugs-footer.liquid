@@ -1,0 +1,290 @@
+{{ 'ugs-theme.css' | asset_url | stylesheet_tag }}
+
+<footer class="ugs-footer ugs-page">
+  <div class="ugs-container">
+    <div class="ugs-footer__top">
+      <div class="ugs-footer__brand">
+        <a href="{{ routes.root_url }}">
+          {%- if section.settings.logo != blank -%}
+            {{ section.settings.logo | image_url: width: 590 | image_tag: loading: 'lazy', alt: shop.name }}
+          {%- elsif section.settings.logo_asset != blank -%}
+            <img src="{{ section.settings.logo_asset | asset_url }}" alt="{{ shop.name | escape }}" width="295" height="146" loading="lazy">
+          {%- else -%}
+            <img src="{{ 'ugs-logo-footer.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="295" height="146" loading="lazy">
+          {%- endif -%}
+        </a>
+        {%- if section.settings.brand_text != blank -%}
+          <p>{{ section.settings.brand_text }}</p>
+        {%- endif -%}
+      </div>
+      <div>
+        <div class="ugs-footer__dealer-box">
+          {%- if section.settings.dealer_heading != blank -%}
+            <h5 class="ugs-heading ugs-h5">{{ section.settings.dealer_heading }}</h5>
+          {%- endif -%}
+          {%- if section.settings.dealer_text != blank -%}
+            <p>{{ section.settings.dealer_text }}</p>
+          {%- endif -%}
+          {%- if section.settings.dealer_button_label != blank -%}
+            <a class="ugs-btn ugs-btn--primary" href="{{ section.settings.dealer_button_link | default: '#' }}">
+              {{ section.settings.dealer_button_label }}
+              <img src="{{ 'ugs-icon-arrow-right.svg' | asset_url }}" alt="" width="28" height="28">
+            </a>
+          {%- endif -%}
+        </div>
+        <div class="ugs-footer__social-pay">
+          <div>
+            <h6>{{ section.settings.social_heading }}</h6>
+            {%- render 'social-icons' -%}
+          </div>
+          {%- if section.settings.show_payment -%}
+            <div>
+              <h6>{{ section.settings.payment_heading }}</h6>
+              <div class="footer__payment">
+                <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
+                <ul class="list list-payment" role="list">
+                  {%- for type in shop.enabled_payment_types -%}
+                    <li class="list-payment__item">
+                      {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <div class="ugs-footer__links">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'link_list' -%}
+            <div {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h6>{{ block.settings.heading }}</h6>
+              {%- endif -%}
+              {%- if block.settings.menu != blank -%}
+                <ul>
+                  {%- for link in block.settings.menu.links -%}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              {%- elsif block.settings.links_text != blank -%}
+                <ul>
+                  {%- assign lines = block.settings.links_text | newline_to_br | split: '<br />' -%}
+                  {%- for line in lines -%}
+                    {%- assign clean = line | strip -%}
+                    {%- if clean != blank -%}
+                      <li>{{ clean }}</li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+          {%- when 'contact' -%}
+            <div {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h6>{{ block.settings.heading }}</h6>
+              {%- endif -%}
+              {%- if block.settings.phone != blank -%}
+                <div class="ugs-footer__contact-item">
+                  <span aria-hidden="true">☎</span>
+                  <a href="tel:{{ block.settings.phone | replace: ' ', '' | replace: '-', '' }}">{{ block.settings.phone }}</a>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.email != blank -%}
+                <div class="ugs-footer__contact-item">
+                  <span aria-hidden="true">✉</span>
+                  <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.address != blank -%}
+                <div class="ugs-footer__contact-item">
+                  <span aria-hidden="true">📍</span>
+                  <span>{{ block.settings.address | newline_to_br }}</span>
+                </div>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="ugs-footer__bottom">
+    <p>{{ section.settings.copyright }}</p>
+    {%- if section.settings.legal_text != blank -%}
+      <p>{{ section.settings.legal_text }}</p>
+    {%- endif -%}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "UGS Footer",
+  "tag": "section",
+  "class": "ugs-page",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_asset",
+      "label": "Theme logo filename",
+      "default": "ugs-logo-footer.svg"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_text",
+      "label": "Brand description",
+      "default": "United Global Solar is your trusted source for premium solar panels, inverters, batteries, EV charging solutions, and complete solar systems. We deliver quality products, competitive pricing, and expert support across the United States."
+    },
+    {
+      "type": "text",
+      "id": "dealer_heading",
+      "label": "Dealer heading",
+      "default": "Become a Dealer"
+    },
+    {
+      "type": "textarea",
+      "id": "dealer_text",
+      "label": "Dealer text",
+      "default": "Join our growing network of installers and distributors."
+    },
+    {
+      "type": "text",
+      "id": "dealer_button_label",
+      "label": "Dealer button",
+      "default": "Apply Now"
+    },
+    {
+      "type": "url",
+      "id": "dealer_button_link",
+      "label": "Dealer button link"
+    },
+    {
+      "type": "text",
+      "id": "social_heading",
+      "label": "Social heading",
+      "default": "Stay Connected"
+    },
+    {
+      "type": "text",
+      "id": "payment_heading",
+      "label": "Payment heading",
+      "default": "Payment Methods"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "2026 United Global Solar. All Rights Reserved."
+    },
+    {
+      "type": "text",
+      "id": "legal_text",
+      "label": "Legal links text",
+      "default": "Privacy Policy • Terms & Conditions • Accessibility • Sitemap"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+          "type": "textarea",
+          "id": "links_text",
+          "label": "Fallback links (one per line)",
+          "default": "Solar Panels\nInverters\nBatteries\nMounting Systems\nEV Chargers\nSolar Kits\nCharge Controllers\nAccessories"
+        }
+      ]
+    },
+    {
+      "type": "contact",
+      "name": "Contact",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Contact Us"
+        },
+        {
+          "type": "text",
+          "id": "phone",
+          "label": "Phone",
+          "default": "1-332-916-885"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email",
+          "default": "info@unitedglobalsolar.com"
+        },
+        {
+          "type": "textarea",
+          "id": "address",
+          "label": "Address",
+          "default": "400 Rella Blvd\nMontebello, NY 10901 United States\nMon-Sun 9am – 6pm EST"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGS Footer",
+      "blocks": [
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "links_text": "Solar Panels\nInverters\nBatteries\nMounting Systems\nEV Chargers\nSolar Kits\nCharge Controllers\nAccessories"
+          }
+        },
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Company",
+            "links_text": "About Us\nBecome a Dealer\nWhy Choose Us\nBrands We Carry\nContact Us\nBlog"
+          }
+        },
+        {
+          "type": "link_list",
+          "settings": {
+            "heading": "Customer Support",
+            "links_text": "FAQs\nShipping Policy\nReturns & Refunds\nWarranty Info\nTrack Your Order\nTechnical Support\nDealer Support"
+          }
+        },
+        {
+          "type": "contact"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,112 @@
+{{ 'ugs-theme.css' | asset_url | stylesheet_tag }}
+
+<section class="ugs-page" style="padding: 0 var(--ugs-page-pad); background: var(--ugs-n2);">
+  <div class="ugs-faq">
+    <div class="ugs-faq__intro">
+      {%- if section.settings.title != blank -%}
+        <h2 class="ugs-heading ugs-h2">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="ugs-body-lg">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+    <div class="ugs-faq__list">
+      {%- for block in section.blocks -%}
+        <details class="ugs-faq-item" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary>
+            <span>{{ block.settings.question }}</span>
+            <span class="ugs-faq-item__icon" aria-hidden="true">
+              <img src="{{ 'ugs-icon-caret.svg' | asset_url }}" alt="" width="20" height="20" style="filter: brightness(0) invert(1);">
+            </span>
+          </summary>
+          {%- if block.settings.answer != blank -%}
+            <div class="ugs-faq-item__answer">{{ block.settings.answer }}</div>
+          {%- endif -%}
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UGS FAQ",
+  "tag": "section",
+  "class": "ugs-page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Learn more about our products, services, shipping, and dealer opportunities before you buy."
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open first item by default",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Do you offer nationwide shipping?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Yes. We ship solar panels, inverters, batteries, EV chargers, and accessories across the United States. Enjoy free shipping on qualifying orders over $600."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGS FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer nationwide shipping?",
+            "answer": "Yes. We ship solar panels, inverters, batteries, EV chargers, and accessories across the United States. Enjoy free shipping on qualifying orders over $600."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Which solar brands do you carry?",
+            "answer": "We carry Tier-1 brands including Canadian Solar, LONGi, Sungrow, ChargePoint, EG4, and more."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can you help me choose the right products?",
+            "answer": "Absolutely. Our U.S.-based solar experts can help you select panels, inverters, batteries, and complete kits for residential or commercial projects."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Do you offer wholesale pricing?",
+            "answer": "Yes. Installers, contractors, and dealers can access competitive wholesale pricing and volume discounts through our dealer program."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

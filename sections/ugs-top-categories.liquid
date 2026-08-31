@@ -1,0 +1,188 @@
+{{ 'ugs-theme.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign default_images = 'ugs-cat-solar-panels.jpg,ugs-cat-inverters.jpg,ugs-cat-batteries.jpg,ugs-cat-ev-chargers.jpg,ugs-cat-solar-kits.jpg,ugs-cat-lighting.jpg,ugs-cat-charge-controllers.jpg,ugs-cat-accessories.jpg' | split: ','
+  assign default_icons = 'ugs-icon-cat-panels.svg,ugs-icon-cat-inverters.svg,ugs-icon-cat-batteries.svg,ugs-icon-cat-ev.svg,ugs-icon-cat-kits.svg,ugs-icon-cat-lighting.svg,ugs-icon-cat-controllers.svg,ugs-icon-cat-accessories.svg' | split: ','
+-%}
+
+<section class="ugs-page ugs-section">
+  <div class="ugs-container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="ugs-heading ugs-h2 ugs-categories__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="ugs-categories__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          if block.settings.image != blank
+            assign media_src = block.settings.image | image_url: width: 800
+          else
+            assign asset_name = block.settings.image_asset | default: default_images[forloop.index0]
+            capture media_src
+              render 'ugs-asset', name: asset_name
+            endcapture
+            assign media_src = media_src | strip
+          endif
+
+          if block.settings.icon != blank
+            assign icon_src = block.settings.icon | image_url: width: 96
+          else
+            assign icon_name = block.settings.icon_asset | default: default_icons[forloop.index0]
+            capture icon_src
+              render 'ugs-asset', name: icon_name
+            endcapture
+            assign icon_src = icon_src | strip
+          endif
+        -%}
+        <a
+          class="ugs-category-card"
+          href="{{ block.settings.link | default: routes.all_products_collection_url }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if media_src != blank -%}
+            <img
+              class="ugs-category-card__media"
+              src="{{ media_src }}"
+              alt="{{ block.settings.title | escape }}"
+              width="295"
+              height="260"
+              loading="lazy"
+            >
+          {%- endif -%}
+          <div class="ugs-category-card__footer">
+            {%- if icon_src != blank -%}
+              <img class="ugs-category-card__icon" src="{{ icon_src }}" alt="" width="48" height="48" loading="lazy">
+            {%- endif -%}
+            <p class="ugs-category-card__name">{{ block.settings.title }}</p>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UGS Top Categories",
+  "tag": "section",
+  "class": "ugs-page",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Top Categories"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Theme image filename"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_asset",
+          "label": "Theme icon filename"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Solar Panels"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGS Top Categories",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Solar Panels",
+            "image_asset": "ugs-cat-solar-panels.jpg",
+            "icon_asset": "ugs-icon-cat-panels.svg"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Inverters",
+            "image_asset": "ugs-cat-inverters.jpg",
+            "icon_asset": "ugs-icon-cat-inverters.svg"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Batteries",
+            "image_asset": "ugs-cat-batteries.jpg",
+            "icon_asset": "ugs-icon-cat-batteries.svg"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "EV Chargers",
+            "image_asset": "ugs-cat-ev-chargers.jpg",
+            "icon_asset": "ugs-icon-cat-ev.svg"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Solar Kits",
+            "image_asset": "ugs-cat-solar-kits.jpg",
+            "icon_asset": "ugs-icon-cat-kits.svg"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Lighting",
+            "image_asset": "ugs-cat-lighting.jpg",
+            "icon_asset": "ugs-icon-cat-lighting.svg"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Charge Controllers",
+            "image_asset": "ugs-cat-charge-controllers.jpg",
+            "icon_asset": "ugs-icon-cat-controllers.svg"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Accessories",
+            "image_asset": "ugs-cat-accessories.jpg",
+            "icon_asset": "ugs-icon-cat-accessories.svg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,169 @@
+{{ 'ugs-theme.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign default_images = 'ugs-sol-residential.jpg,ugs-sol-commercial.jpg,ugs-sol-industrial.jpg,ugs-sol-agriculture.jpg,ugs-sol-offgrid.jpg,ugs-sol-gridtied.jpg,ugs-sol-storage.jpg,ugs-sol-ev.jpg' | split: ','
+-%}
+
+<section class="ugs-page" style="padding: 0 0 80px;">
+  <div class="ugs-container">
+    {%- if section.settings.title != blank -%}
+      <h2 class="ugs-heading ugs-h2 ugs-solutions__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="ugs-solutions__grid">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          if block.settings.image != blank
+            assign bg = block.settings.image | image_url: width: 800
+          else
+            assign asset_name = block.settings.image_asset | default: default_images[forloop.index0]
+            capture bg
+              render 'ugs-asset', name: asset_name
+            endcapture
+            assign bg = bg | strip
+          endif
+        -%}
+        <a
+          class="ugs-solution-card"
+          href="{{ block.settings.link | default: routes.all_products_collection_url }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if bg != blank -%}
+            <img class="ugs-solution-card__img" src="{{ bg }}" alt="{{ block.settings.title | escape }}" width="295" height="250" loading="lazy">
+          {%- endif -%}
+          <div class="ugs-solution-card__content">
+            <div class="ugs-solution-card__title-row">
+              <h3 class="ugs-heading ugs-h5">{{ block.settings.title }}</h3>
+              <img src="{{ 'ugs-icon-arrow-right.svg' | asset_url }}" alt="" width="28" height="28">
+            </div>
+            {%- if block.settings.subtitle != blank -%}
+              <p class="ugs-body-sm">{{ block.settings.subtitle }}</p>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UGS Shop by Solution",
+  "tag": "section",
+  "class": "ugs-page",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Solution"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "solution",
+      "name": "Solution",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background image"
+        },
+        {
+          "type": "text",
+          "id": "image_asset",
+          "label": "Theme image filename"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Residential"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Panels • Batteries • EV Chargers"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGS Shop by Solution",
+      "blocks": [
+        {
+          "type": "solution",
+          "settings": {
+            "title": "Residential",
+            "subtitle": "Panels • Batteries • EV Chargers",
+            "image_asset": "ugs-sol-residential.jpg"
+          }
+        },
+        {
+          "type": "solution",
+          "settings": {
+            "title": "Commercial",
+            "subtitle": "Panels • Inverters • Energy Storage",
+            "image_asset": "ugs-sol-commercial.jpg"
+          }
+        },
+        {
+          "type": "solution",
+          "settings": {
+            "title": "Industrial",
+            "subtitle": "High-Capacity • Storage Systems",
+            "image_asset": "ugs-sol-industrial.jpg"
+          }
+        },
+        {
+          "type": "solution",
+          "settings": {
+            "title": "Agriculture",
+            "subtitle": "Water Pumps • Off-Grid Kits",
+            "image_asset": "ugs-sol-agriculture.jpg"
+          }
+        },
+        {
+          "type": "solution",
+          "settings": {
+            "title": "Off-Grid",
+            "subtitle": "Solar Kits • Charge Controllers",
+            "image_asset": "ugs-sol-offgrid.jpg"
+          }
+        },
+        {
+          "type": "solution",
+          "settings": {
+            "title": "Grid-Tied",
+            "subtitle": "Grid Inverters • Monitoring Systems",
+            "image_asset": "ugs-sol-gridtied.jpg"
+          }
+        },
+        {
+          "type": "solution",
+          "settings": {
+            "title": "Energy Storage",
+            "subtitle": "Lithium Batteries • Hybrid Inverters",
+            "image_asset": "ugs-sol-storage.jpg"
+          }
+        },
+        {
+          "type": "solution",
+          "settings": {
+            "title": "EV Infrastructure",
+            "subtitle": "EV Chargers • Smart Chargers",
+            "image_asset": "ugs-sol-ev.jpg"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
