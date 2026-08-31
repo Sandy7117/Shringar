@@ -1,448 +1,75 @@
 {
   "sections": {
-    "ugs_hero": {
-      "type": "ugs-hero-banner",
+    "image_banner": {
+      "type": "image-banner",
       "blocks": {
-        "slide_1": {
-          "type": "slide",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "theme": "image",
-            "image_asset": "ugs-hero-slide-1.png",
-            "heading": "Premium Solar Solutions",
-            "subheading": "for Homes, Businesses & Installers!",
-            "button_label": "Order Now"
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
           }
         },
-        "slide_2": {
-          "type": "slide",
+        "button": {
+          "type": "buttons",
           "settings": {
-            "theme": "blue",
-            "image_asset": "ugs-hero-slide-2.png",
-            "heading": "Premium Solar Solutions",
-            "subheading": "for Homes, Businesses & Installers!",
-            "button_label": "Order Now"
-          }
-        },
-        "slide_3": {
-          "type": "slide",
-          "settings": {
-            "theme": "green",
-            "image_asset": "ugs-hero-slide-3.png",
-            "heading": "Premium Solar Solutions",
-            "subheading": "for Homes, Businesses & Installers!",
-            "button_label": "Order Now"
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
-      "block_order": ["slide_1", "slide_2", "slide_3"],
+      "block_order": [
+        "heading",
+        "button"
+      ],
       "settings": {
-        "autoplay": true,
-        "autoplay_speed": 5
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "image_behavior": "none",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
-    "ugs_stats": {
-      "type": "ugs-stats",
-      "blocks": {
-        "stat_1": {
-          "type": "stat",
-          "settings": {
-            "image_asset": "ugs-stat-experience.jpg",
-            "value": "5+",
-            "label": "Years of Experience",
-            "description": "Delivering Reliable Solar Solutions"
-          }
-        },
-        "stat_2": {
-          "type": "stat",
-          "settings": {
-            "image_asset": "ugs-stat-projects-5ee16a.jpg",
-            "value": "5000+",
-            "label": "Projects Delivered",
-            "description": "Across Residential & Commercial Sectors"
-          }
-        },
-        "stat_3": {
-          "type": "stat",
-          "settings": {
-            "image_asset": "ugs-stat-brands.jpg",
-            "value": "50+",
-            "label": "Trusted Brands",
-            "description": "From Leading Global Manufacturers"
-          }
-        }
-      },
-      "block_order": ["stat_1", "stat_2", "stat_3"],
-      "settings": {}
-    },
-    "ugs_wholesale": {
-      "type": "ugs-wholesale-cta",
+    "featured_collection": {
+      "type": "featured-collection",
       "settings": {
-        "image_asset": "ugs-wholesale-banner.jpg",
-        "heading": "Get the Right Solar Products",
-        "subheading": "At Competitive ",
-        "highlight": "Wholesale Prices!",
-        "button_label": "Contact a Specialist",
-        "phone": "1-332-916-885"
-      }
-    },
-    "ugs_categories": {
-      "type": "ugs-top-categories",
-      "blocks": {
-        "c1": {
-          "type": "category",
-          "settings": {
-            "title": "Solar Panels",
-            "image_asset": "ugs-cat-solar-panels.jpg",
-            "icon_asset": "ugs-icon-cat-panels.svg"
-          }
-        },
-        "c2": {
-          "type": "category",
-          "settings": {
-            "title": "Inverters",
-            "image_asset": "ugs-cat-inverters.jpg",
-            "icon_asset": "ugs-icon-cat-inverters.svg"
-          }
-        },
-        "c3": {
-          "type": "category",
-          "settings": {
-            "title": "Batteries",
-            "image_asset": "ugs-cat-batteries.jpg",
-            "icon_asset": "ugs-icon-cat-batteries.svg"
-          }
-        },
-        "c4": {
-          "type": "category",
-          "settings": {
-            "title": "EV Chargers",
-            "image_asset": "ugs-cat-ev-chargers.jpg",
-            "icon_asset": "ugs-icon-cat-ev.svg"
-          }
-        },
-        "c5": {
-          "type": "category",
-          "settings": {
-            "title": "Solar Kits",
-            "image_asset": "ugs-cat-solar-kits.jpg",
-            "icon_asset": "ugs-icon-cat-kits.svg"
-          }
-        },
-        "c6": {
-          "type": "category",
-          "settings": {
-            "title": "Lighting",
-            "image_asset": "ugs-cat-lighting.jpg",
-            "icon_asset": "ugs-icon-cat-lighting.svg"
-          }
-        },
-        "c7": {
-          "type": "category",
-          "settings": {
-            "title": "Charge Controllers",
-            "image_asset": "ugs-cat-charge-controllers.jpg",
-            "icon_asset": "ugs-icon-cat-controllers.svg"
-          }
-        },
-        "c8": {
-          "type": "category",
-          "settings": {
-            "title": "Accessories",
-            "image_asset": "ugs-cat-accessories.jpg",
-            "icon_asset": "ugs-icon-cat-accessories.svg"
-          }
-        }
-      },
-      "block_order": ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"],
-      "settings": {
-        "title": "Top Categories"
-      }
-    },
-    "ugs_solutions": {
-      "type": "ugs-shop-solutions",
-      "blocks": {
-        "s1": {
-          "type": "solution",
-          "settings": {
-            "title": "Residential",
-            "subtitle": "Panels • Batteries • EV Chargers",
-            "image_asset": "ugs-sol-residential.jpg"
-          }
-        },
-        "s2": {
-          "type": "solution",
-          "settings": {
-            "title": "Commercial",
-            "subtitle": "Panels • Inverters • Energy Storage",
-            "image_asset": "ugs-sol-commercial.jpg"
-          }
-        },
-        "s3": {
-          "type": "solution",
-          "settings": {
-            "title": "Industrial",
-            "subtitle": "High-Capacity • Storage Systems",
-            "image_asset": "ugs-sol-industrial.jpg"
-          }
-        },
-        "s4": {
-          "type": "solution",
-          "settings": {
-            "title": "Agriculture",
-            "subtitle": "Water Pumps • Off-Grid Kits",
-            "image_asset": "ugs-sol-agriculture.jpg"
-          }
-        },
-        "s5": {
-          "type": "solution",
-          "settings": {
-            "title": "Off-Grid",
-            "subtitle": "Solar Kits • Charge Controllers",
-            "image_asset": "ugs-sol-offgrid.jpg"
-          }
-        },
-        "s6": {
-          "type": "solution",
-          "settings": {
-            "title": "Grid-Tied",
-            "subtitle": "Grid Inverters • Monitoring Systems",
-            "image_asset": "ugs-sol-gridtied.jpg"
-          }
-        },
-        "s7": {
-          "type": "solution",
-          "settings": {
-            "title": "Energy Storage",
-            "subtitle": "Lithium Batteries • Hybrid Inverters",
-            "image_asset": "ugs-sol-storage.jpg"
-          }
-        },
-        "s8": {
-          "type": "solution",
-          "settings": {
-            "title": "EV Infrastructure",
-            "subtitle": "EV Chargers • Smart Chargers",
-            "image_asset": "ugs-sol-ev.jpg"
-          }
-        }
-      },
-      "block_order": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"],
-      "settings": {
-        "title": "Shop by Solution"
-      }
-    },
-    "ugs_trust": {
-      "type": "ugs-trust",
-      "blocks": {
-        "f1": {
-          "type": "feature",
-          "settings": {
-            "icon_asset": "ugs-icon-truck.svg",
-            "highlight": "Fast delivery",
-            "text": " across\nthe United States."
-          }
-        },
-        "f2": {
-          "type": "feature",
-          "settings": {
-            "icon_asset": "ugs-icon-trophy.svg",
-            "highlight": "Tier-1 products",
-            "text": "\nfrom trusted brands."
-          }
-        },
-        "f3": {
-          "type": "feature",
-          "settings": {
-            "icon_asset": "ugs-icon-tag.svg",
-            "highlight": "Better pricing",
-            "text": "\non large orders."
-          }
-        },
-        "f4": {
-          "type": "feature",
-          "settings": {
-            "icon_asset": "ugs-icon-shield.svg",
-            "highlight": "Warranty coverage",
-            "text": "\nyou can trust"
-          }
-        },
-        "f5": {
-          "type": "feature",
-          "settings": {
-            "icon_asset": "ugs-icon-globe.svg",
-            "highlight": "",
-            "text": "Reliable shipping\nacross the USA."
-          }
-        },
-        "f6": {
-          "type": "feature",
-          "settings": {
-            "icon_asset": "ugs-icon-headset.svg",
-            "highlight": "Expert support",
-            "text": "\npre- & post-sales."
-          }
-        }
-      },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
-      "settings": {
-        "title": "Why Customers Trust Us",
-        "body_html": "<p>We're more than a solar supplier, we're your <strong>trusted project partner.</strong></p><p>Whether you're purchasing a single system or sourcing products for large-scale installations, we deliver premium brands, reliable inventory, nationwide distribution, and dedicated technical support to keep your projects moving.</p>",
-        "body": "We're more than a solar supplier, we're your trusted project partner.\n\nWhether you're purchasing a single system or sourcing products for large-scale installations, we deliver premium brands, reliable inventory, nationwide distribution, and dedicated technical support to keep your projects moving."
-      }
-    },
-    "ugs_brands": {
-      "type": "ugs-brands",
-      "blocks": {
-        "b1": {
-          "type": "brand",
-          "settings": {
-            "title": "Canadian Solar",
-            "logo_asset": "ugs-brand-canadian.png"
-          }
-        },
-        "b2": {
-          "type": "brand",
-          "settings": {
-            "title": "ChargePoint",
-            "logo_asset": "ugs-brand-chargepoint.png"
-          }
-        },
-        "b3": {
-          "type": "brand",
-          "settings": {
-            "title": "Sungrow",
-            "logo_asset": "ugs-brand-sungrow.png"
-          }
-        },
-        "b4": {
-          "type": "brand",
-          "settings": {
-            "title": "EG4",
-            "logo_asset": "ugs-brand-eg4.png"
-          }
-        },
-        "b5": {
-          "type": "brand",
-          "settings": {
-            "title": "LONGi",
-            "logo_asset": "ugs-brand-longi.png"
-          }
-        },
-        "b6": {
-          "type": "brand",
-          "settings": {
-            "title": "Sungrow",
-            "logo_asset": "ugs-brand-sungrow.png"
-          }
-        }
-      },
-      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"],
-      "settings": {
-        "title": "Brands We Carry"
-      }
-    },
-    "ugs_freeship": {
-      "type": "ugs-free-shipping",
-      "settings": {
-        "image_asset": "ugs-free-shipping-left.jpg",
-        "bg_image_asset": "ugs-free-shipping-bg.jpg",
-        "heading": "Enjoy FREE SHIPPING on Orders Over $600",
-        "button_label": "Expert Advice: 1-332-916-885 ",
-        "phone": "1-332-916-885"
-      }
-    },
-    "ugs_dealer": {
-      "type": "ugs-dealer",
-      "blocks": {
-        "d1": {
-          "type": "benefit",
-          "settings": {
-            "text": "Access exclusive dealer pricing and volume discounts"
-          }
-        },
-        "d2": {
-          "type": "benefit",
-          "settings": {
-            "text": "Partner with trusted Tier-1 solar brands"
-          }
-        },
-        "d3": {
-          "type": "benefit",
-          "settings": {
-            "text": "Receive dedicated sales and technical support"
-          }
-        }
-      },
-      "block_order": ["d1", "d2", "d3"],
-      "settings": {
-        "title": "Become a United Global Solar Dealer",
-        "text_1": "Expand your business with premium solar products, competitive wholesale pricing, and dedicated dealer support designed to help you grow.",
-        "text_2": "Whether you're an installer, contractor, distributor, or retailer, our team is ready to provide the products, pricing, and expertise you need to succeed.",
-        "image_asset": "ugs-dealer-image-270cd4.jpg",
-        "primary_label": "Become a Dealer",
-        "secondary_label": "View Dealer Benefits"
-      }
-    },
-    "ugs_faq": {
-      "type": "ugs-faq",
-      "blocks": {
-        "q1": {
-          "type": "faq",
-          "settings": {
-            "question": "Do you offer nationwide shipping?",
-            "answer": "Yes. We ship solar panels, inverters, batteries, EV chargers, and accessories across the United States. Enjoy free shipping on qualifying orders over $600."
-          }
-        },
-        "q2": {
-          "type": "faq",
-          "settings": {
-            "question": "Which solar brands do you carry?",
-            "answer": "We carry Tier-1 brands including Canadian Solar, LONGi, Sungrow, ChargePoint, EG4, and more."
-          }
-        },
-        "q3": {
-          "type": "faq",
-          "settings": {
-            "question": "Can you help me choose the right products?",
-            "answer": "Absolutely. Our U.S.-based solar experts can help you select panels, inverters, batteries, and complete kits for residential or commercial projects."
-          }
-        },
-        "q4": {
-          "type": "faq",
-          "settings": {
-            "question": "Do you offer wholesale pricing?",
-            "answer": "Yes. Installers, contractors, and dealers can access competitive wholesale pricing and volume discounts through our dealer program."
-          }
-        }
-      },
-      "block_order": ["q1", "q2", "q3", "q4"],
-      "settings": {
-        "title": "Frequently Asked Questions",
-        "subtitle": "Learn more about our products, services, shipping, and dealer opportunities before you buy.",
-        "open_first": true
-      }
-    },
-    "ugs_cta": {
-      "type": "ugs-contact-cta",
-      "settings": {
-        "heading": "Have Questions About Your Solar Project?",
-        "label": "Talk to Our Experts: ",
-        "phone": "1-332-916-885",
-        "image_asset": "ugs-cta-experts-5fb140.jpg"
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 44,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "ugs_hero",
-    "ugs_stats",
-    "ugs_wholesale",
-    "ugs_categories",
-    "ugs_solutions",
-    "ugs_trust",
-    "ugs_brands",
-    "ugs_freeship",
-    "ugs_dealer",
-    "ugs_faq",
-    "ugs_cta"
+    "image_banner",
+    "featured_collection"
   ]
 }
