@@ -1,0 +1,12 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+>
+{{ 'zivora-home.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'zivora-home.js' | asset_url }}" defer></script>
+{% if template.name == 'product' %}
+  {{ 'zivora-pdp.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'zivora-pdp.js' | asset_url }}" defer></script>
+{% endif %}

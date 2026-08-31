@@ -1,0 +1,43 @@
+<div class="zivora-announce zivora-section">
+  <div class="zivora-wrap zivora-announce__inner">
+    {% for block in section.blocks %}
+      <div class="zivora-announce__item" {{ block.shopify_attributes }}>
+        <span class="zivora-announce__dot" aria-hidden="true"></span>
+        <span>{{ block.settings.text }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Zivora announcement",
+  "class": "zivora-announce-section",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Free shipping on orders above ₹999"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zivora announcement",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Free shipping on orders above ₹999" } },
+        { "type": "item", "settings": { "text": "COD Available" } },
+        { "type": "item", "settings": { "text": "Easy 7-Day Returns" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

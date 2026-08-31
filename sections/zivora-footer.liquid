@@ -1,0 +1,124 @@
+<footer class="zivora-footer zivora-section">
+  <div class="zivora-wrap">
+    <div class="zivora-footer__grid">
+      <div>
+        <div class="zivora-footer__brand">{{ shop.name }}</div>
+        <p class="zivora-footer__tagline">{{ section.settings.tagline }}</p>
+        <div class="zivora-footer__social">
+          {% if section.settings.instagram != blank %}
+            <a href="{{ section.settings.instagram }}" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+            </a>
+          {% endif %}
+          {% if section.settings.facebook != blank %}
+            <a href="{{ section.settings.facebook }}" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.6l.4-3H13v-2c0-.6.4-1 1-1z"/></svg>
+            </a>
+          {% endif %}
+          {% if section.settings.pinterest != blank %}
+            <a href="{{ section.settings.pinterest }}" aria-label="Pinterest" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.4 2 11.9c0 4.2 2.6 7.8 6.3 9.1-.1-.8-.2-2 0-2.8.2-.8 1.3-5.4 1.3-5.4s-.3-.7-.3-1.6c0-1.5.9-2.7 2-2.7.9 0 1.4.7 1.4 1.5 0 .9-.6 2.3-.9 3.6-.3 1.1.5 1.9 1.6 1.9 1.9 0 3.2-2.4 3.2-5.3 0-2.2-1.5-3.8-4.2-3.8-3.1 0-5 2.3-5 4.8 0 .9.3 1.8.7 2.4.1.1.1.2.1.3l-.3 1c0 .2-.2.3-.4.2-1.4-.6-2.1-2.2-2.1-4 0-3 2.5-6.6 7.5-6.6 4 0 6.6 2.9 6.6 6 0 4.1-2.3 7.2-5.6 7.2-1.1 0-2.2-.6-2.5-1.3l-.7 2.6c-.2.9-.9 2-1.3 2.7.9.3 1.9.4 2.9.4 5.5 0 10-4.4 10-9.9C22 6.4 17.5 2 12 2z"/></svg>
+            </a>
+          {% endif %}
+          {% if section.settings.youtube != blank %}
+            <a href="{{ section.settings.youtube }}" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12.2s0-3.2-.4-4.6c-.2-.9-.9-1.6-1.8-1.8C19.2 5.4 12 5.4 12 5.4s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 9 1 12.2 1 12.2s0 3.2.4 4.6c.2.9.9 1.6 1.8 1.8 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.4.4-4.6.4-4.6zM9.8 15.5V8.9l6.2 3.3-6.2 3.3z"/></svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <ul>
+          {% for link in section.settings.quick_links.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% else %}
+            <li><a href="{{ routes.root_url }}">Home</a></li>
+            <li><a href="{{ routes.all_products_collection_url }}">Shop</a></li>
+            <li><a href="{{ routes.all_products_collection_url }}">Collections</a></li>
+            <li><a href="{{ routes.all_products_collection_url }}">New Arrivals</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Customer Care</h3>
+        <ul>
+          {% for link in section.settings.care_links.links %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% else %}
+            <li><a href="{{ pages['contact'].url | default: '/pages/contact' }}">Contact Us</a></li>
+            <li><a href="{{ routes.account_url }}">Track Order</a></li>
+            <li><a href="{{ shop.shipping_policy.url | default: '#' }}">Shipping Policy</a></li>
+            <li><a href="{{ shop.refund_policy.url | default: '#' }}">Returns & Refunds</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="zivora-footer__help">
+        <h3>Help & Support</h3>
+        {% if section.settings.phone != blank %}
+          <p>{{ section.settings.phone }}</p>
+        {% endif %}
+        {% if section.settings.email != blank %}
+          <p><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+        {% endif %}
+        {% if section.settings.hours != blank %}
+          <p>{{ section.settings.hours }}</p>
+        {% endif %}
+      </div>
+
+      <div class="zivora-news">
+        <h3>{{ section.settings.newsletter_heading }}</h3>
+        <p>{{ section.settings.newsletter_text }}</p>
+        {% form 'customer', class: 'zivora-news__form' %}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input
+            type="email"
+            name="contact[email]"
+            placeholder="Your email"
+            required
+            autocomplete="email"
+            aria-label="Email"
+          >
+          <button type="submit" aria-label="Subscribe">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        {% endform %}
+      </div>
+    </div>
+
+    <div class="zivora-footer__bar">
+      <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All Rights Reserved.</p>
+      <div class="zivora-pay">
+        {% for type in shop.enabled_payment_types %}
+          {{ type | payment_type_svg_tag: class: 'icon' }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Zivora footer",
+  "class": "zivora-footer-section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "textarea", "id": "tagline", "label": "Tagline", "default": "Elegant ornaments for every occasion, crafted to make you shine." },
+    { "type": "url", "id": "instagram", "label": "Instagram" },
+    { "type": "url", "id": "facebook", "label": "Facebook" },
+    { "type": "url", "id": "pinterest", "label": "Pinterest" },
+    { "type": "url", "id": "youtube", "label": "YouTube" },
+    { "type": "link_list", "id": "quick_links", "label": "Quick links" },
+    { "type": "link_list", "id": "care_links", "label": "Customer care links" },
+    { "type": "text", "id": "phone", "label": "Phone", "default": "+91 98765 43210" },
+    { "type": "text", "id": "email", "label": "Email", "default": "hello@zivoraornaments.com" },
+    { "type": "text", "id": "hours", "label": "Hours", "default": "Mon–Sat, 10am–7pm IST" },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Stay in touch" },
+    { "type": "text", "id": "newsletter_text", "label": "Newsletter text", "default": "Subscribe for offers and new arrivals" }
+  ],
+  "presets": [{ "name": "Zivora footer" }]
+}
+{% endschema %}

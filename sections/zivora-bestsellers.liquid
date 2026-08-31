@@ -1,0 +1,97 @@
+{% liquid
+  assign collection = section.settings.collection
+  assign limit = section.settings.products_to_show | default: 5
+  assign placeholders = 'Kundan Jhumka Earrings|499|799|https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&q=80,Pearl Drop Necklace|899|1299|https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&q=80,Antique Gold Bangles|1299|1799|https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80,Ruby Statement Ring|649|999|https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&q=80,Temple Jewelry Set|1499|1999|https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80' | split: ','
+%}
+
+<section class="zivora-best zivora-section">
+  <div class="zivora-wrap">
+    <div class="zivora-best__head">
+      <div>
+        <p class="zivora-kicker">{{ section.settings.kicker }}</p>
+        <h2 class="zivora-heading">{{ section.settings.heading }}</h2>
+      </div>
+      {% if section.settings.button_label != blank %}
+        <a class="zivora-btn zivora-btn--outline" href="{{ section.settings.button_link | default: collection.url | default: routes.all_products_collection_url }}">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="zivora-grid">
+      {% if collection != blank and collection.products_count > 0 %}
+        {% for product in collection.products limit: limit %}
+          {% liquid
+            assign compare = product.compare_at_price
+            assign price = product.price
+            assign save = 0
+            if compare > price and compare > 0
+              assign save = compare | minus: price | times: 100.0 | divided_by: compare | round
+            endif
+          %}
+          <article class="zivora-card">
+            <div class="zivora-card__media">
+              <a href="{{ product.url }}">
+                {% if product.featured_image %}
+                  {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '320,480,800' }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag }}
+                {% endif %}
+              </a>
+              <span class="zivora-wish" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.4-7-10a4.2 4.2 0 017-2.5A4.2 4.2 0 0119 11c0 5.6-7 10-7 10z"/></svg>
+              </span>
+            </div>
+            <a class="zivora-card__title" href="{{ product.url }}">{{ product.title }}</a>
+            <div class="zivora-price">
+              <span class="zivora-price__now">{{ price | money }}</span>
+              {% if compare > price %}
+                <span class="zivora-price__was">{{ compare | money }}</span>
+                <span class="zivora-price__off">{{ save }}% OFF</span>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        {% for item in placeholders limit: limit %}
+          {% assign parts = item | split: '|' %}
+          {% assign now = parts[1] | plus: 0 %}
+          {% assign was = parts[2] | plus: 0 %}
+          {% assign save = was | minus: now | times: 100.0 | divided_by: was | round %}
+          <article class="zivora-card">
+            <div class="zivora-card__media">
+              <img src="{{ parts[3] }}" alt="{{ parts[0] | escape }}" width="400" height="400" loading="lazy">
+              <span class="zivora-wish" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.4-7-10a4.2 4.2 0 017-2.5A4.2 4.2 0 0119 11c0 5.6-7 10-7 10z"/></svg>
+              </span>
+            </div>
+            <span class="zivora-card__title">{{ parts[0] }}</span>
+            <div class="zivora-price">
+              <span class="zivora-price__now">₹{{ now }}</span>
+              <span class="zivora-price__was">₹{{ was }}</span>
+              <span class="zivora-price__off">{{ save }}% OFF</span>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Zivora best sellers",
+  "tag": "section",
+  "class": "zivora-best-section",
+  "enabled_on": { "templates": ["index"] },
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Best Sellers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Our Most Loved Pieces" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "View all" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "products_to_show", "label": "Products to show", "min": 3, "max": 10, "step": 1, "default": 5 }
+  ],
+  "presets": [{ "name": "Zivora best sellers" }]
+}
+{% endschema %}
