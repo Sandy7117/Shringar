@@ -1,189 +1,75 @@
 {
   "sections": {
-    "zivora_hero": {
-      "type": "zivora-hero",
+    "image_banner": {
+      "type": "image-banner",
       "blocks": {
-        "slide_1": {
-          "type": "slide",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "kicker": "TIMELESS BEAUTY",
-            "heading": "Ornaments that Elevate Every You",
-            "subheading": "Elegant designs. Affordable luxury.",
-            "button_label": "SHOP NOW",
-            "button_link": "shopify://collections/all"
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
           }
         },
-        "slide_2": {
-          "type": "slide",
+        "button": {
+          "type": "buttons",
           "settings": {
-            "kicker": "NEW SEASON",
-            "heading": "Gold-Tone Glow for Every Occasion",
-            "subheading": "From everyday elegance to festive sparkle.",
-            "button_label": "SHOP NOW",
-            "button_link": "shopify://collections/all"
-          }
-        },
-        "slide_3": {
-          "type": "slide",
-          "settings": {
-            "kicker": "CRAFTED TO SHINE",
-            "heading": "Jewelry That Feels Like You",
-            "subheading": "Thoughtful details. Lasting shine.",
-            "button_label": "SHOP NOW",
-            "button_link": "shopify://collections/all"
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
-      "block_order": ["slide_1", "slide_2", "slide_3"],
-      "settings": {}
-    },
-    "zivora_categories": {
-      "type": "zivora-categories",
-      "blocks": {
-        "cat_1": { "type": "category", "settings": { "title": "Earrings" } },
-        "cat_2": { "type": "category", "settings": { "title": "Necklaces" } },
-        "cat_3": { "type": "category", "settings": { "title": "Pendants" } },
-        "cat_4": { "type": "category", "settings": { "title": "Nose Rings" } },
-        "cat_5": { "type": "category", "settings": { "title": "Rings" } },
-        "cat_6": { "type": "category", "settings": { "title": "Bangles" } },
-        "cat_7": { "type": "category", "settings": { "title": "Sets" } },
-        "cat_8": { "type": "category", "settings": { "title": "Hair Accessories" } }
-      },
-      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4", "cat_5", "cat_6", "cat_7", "cat_8"],
-      "settings": {}
-    },
-    "zivora_usps": {
-      "type": "zivora-usps",
-      "blocks": {
-        "usp_1": {
-          "type": "usp",
-          "settings": {
-            "icon": "quality",
-            "title": "Premium Quality",
-            "text": "Skin-friendly & durable."
-          }
-        },
-        "usp_2": {
-          "type": "usp",
-          "settings": {
-            "icon": "price",
-            "title": "Affordable Prices",
-            "text": "Luxury looks, budget friendly."
-          }
-        },
-        "usp_3": {
-          "type": "usp",
-          "settings": {
-            "icon": "pack",
-            "title": "Secure Packaging",
-            "text": "Perfectly packed for you."
-          }
-        },
-        "usp_4": {
-          "type": "usp",
-          "settings": {
-            "icon": "trust",
-            "title": "Trusted by 10K+",
-            "text": "Happy customers across India."
-          }
-        }
-      },
-      "block_order": ["usp_1", "usp_2", "usp_3", "usp_4"],
-      "settings": {}
-    },
-    "zivora_bestsellers": {
-      "type": "zivora-bestsellers",
+      "block_order": [
+        "heading",
+        "button"
+      ],
       "settings": {
-        "kicker": "BEST SELLERS",
-        "heading": "Our Most Loved Pieces",
-        "button_label": "VIEW ALL",
-        "button_link": "shopify://collections/all",
-        "products_to_show": 5
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "image_behavior": "none",
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
-    "zivora_banners": {
-      "type": "zivora-promo-banners",
-      "blocks": {
-        "banner_1": {
-          "type": "banner",
-          "settings": {
-            "kicker": "NEW ARRIVALS",
-            "heading": "Fresh Designs, Every Week",
-            "button_label": "SHOP NOW",
-            "link": "shopify://collections/all"
-          }
-        },
-        "banner_2": {
-          "type": "banner",
-          "settings": {
-            "kicker": "SHINE TOGETHER",
-            "heading": "Flat 20% Off on Jewelry Sets",
-            "button_label": "SHOP COLLECTIONS",
-            "link": "shopify://collections/all"
-          }
-        }
-      },
-      "block_order": ["banner_1", "banner_2"],
-      "settings": {}
-    },
-    "zivora_testimonials": {
-      "type": "zivora-testimonials",
-      "blocks": {
-        "q_1": {
-          "type": "quote",
-          "settings": {
-            "quote": "The quality is amazing for the price!",
-            "name": "Priya Sharma",
-            "location": "Mumbai"
-          }
-        },
-        "q_2": {
-          "type": "quote",
-          "settings": {
-            "quote": "Looks so premium, I wear them every day.",
-            "name": "Ananya Reddy",
-            "location": "Hyderabad"
-          }
-        },
-        "q_3": {
-          "type": "quote",
-          "settings": {
-            "quote": "Packaging was beautiful. Perfect for gifting.",
-            "name": "Meera Patel",
-            "location": "Ahmedabad"
-          }
-        }
-      },
-      "block_order": ["q_1", "q_2", "q_3"],
+    "featured_collection": {
+      "type": "featured-collection",
       "settings": {
-        "kicker": "WHAT OUR CUSTOMERS SAY",
-        "heading": "Loved by Thousands"
-      }
-    },
-    "zivora_instagram": {
-      "type": "zivora-instagram",
-      "blocks": {
-        "ig_1": { "type": "image", "settings": {} },
-        "ig_2": { "type": "image", "settings": {} },
-        "ig_3": { "type": "image", "settings": {} },
-        "ig_4": { "type": "image", "settings": {} },
-        "ig_5": { "type": "image", "settings": {} },
-        "ig_6": { "type": "image", "settings": {} }
-      },
-      "block_order": ["ig_1", "ig_2", "ig_3", "ig_4", "ig_5", "ig_6"],
-      "settings": {
-        "kicker": "FOLLOW US ON INSTAGRAM",
-        "handle": "@zivora.ornaments"
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "padding_top": 44,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "zivora_hero",
-    "zivora_categories",
-    "zivora_usps",
-    "zivora_bestsellers",
-    "zivora_banners",
-    "zivora_testimonials",
-    "zivora_instagram"
+    "image_banner",
+    "featured_collection"
   ]
 }
