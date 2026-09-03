@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "zivora_hero": {
@@ -34,22 +43,83 @@
           }
         }
       },
-      "block_order": ["slide_1", "slide_2", "slide_3"],
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
       "settings": {}
     },
     "zivora_categories": {
       "type": "zivora-categories",
       "blocks": {
-        "cat_1": { "type": "category", "settings": { "title": "Earrings" } },
-        "cat_2": { "type": "category", "settings": { "title": "Necklaces" } },
-        "cat_3": { "type": "category", "settings": { "title": "Pendants" } },
-        "cat_4": { "type": "category", "settings": { "title": "Nose Rings" } },
-        "cat_5": { "type": "category", "settings": { "title": "Rings" } },
-        "cat_6": { "type": "category", "settings": { "title": "Bangles" } },
-        "cat_7": { "type": "category", "settings": { "title": "Sets" } },
-        "cat_8": { "type": "category", "settings": { "title": "Hair Accessories" } }
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "title": "Earrings",
+            "link": ""
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "title": "Necklaces",
+            "link": ""
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "title": "Pendants",
+            "link": ""
+          }
+        },
+        "cat_4": {
+          "type": "category",
+          "settings": {
+            "title": "Nose Rings",
+            "link": ""
+          }
+        },
+        "cat_5": {
+          "type": "category",
+          "settings": {
+            "title": "Rings",
+            "link": ""
+          }
+        },
+        "cat_6": {
+          "type": "category",
+          "settings": {
+            "title": "Bangles",
+            "link": ""
+          }
+        },
+        "cat_7": {
+          "type": "category",
+          "settings": {
+            "title": "Sets",
+            "link": ""
+          }
+        },
+        "cat_8": {
+          "type": "category",
+          "settings": {
+            "title": "Hair Accessories",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4", "cat_5", "cat_6", "cat_7", "cat_8"],
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6",
+        "cat_7",
+        "cat_8"
+      ],
       "settings": {}
     },
     "zivora_usps": {
@@ -88,7 +158,12 @@
           }
         }
       },
-      "block_order": ["usp_1", "usp_2", "usp_3", "usp_4"],
+      "block_order": [
+        "usp_1",
+        "usp_2",
+        "usp_3",
+        "usp_4"
+      ],
       "settings": {}
     },
     "zivora_bestsellers": {
@@ -98,6 +173,7 @@
         "heading": "Our Most Loved Pieces",
         "button_label": "VIEW ALL",
         "button_link": "shopify://collections/all",
+        "collection": "",
         "products_to_show": 5
       }
     },
@@ -123,7 +199,10 @@
           }
         }
       },
-      "block_order": ["banner_1", "banner_2"],
+      "block_order": [
+        "banner_1",
+        "banner_2"
+      ],
       "settings": {}
     },
     "zivora_testimonials": {
@@ -154,7 +233,11 @@
           }
         }
       },
-      "block_order": ["q_1", "q_2", "q_3"],
+      "block_order": [
+        "q_1",
+        "q_2",
+        "q_3"
+      ],
       "settings": {
         "kicker": "WHAT OUR CUSTOMERS SAY",
         "heading": "Loved by Thousands"
@@ -163,17 +246,62 @@
     "zivora_instagram": {
       "type": "zivora-instagram",
       "blocks": {
-        "ig_1": { "type": "image", "settings": {} },
-        "ig_2": { "type": "image", "settings": {} },
-        "ig_3": { "type": "image", "settings": {} },
-        "ig_4": { "type": "image", "settings": {} },
-        "ig_5": { "type": "image", "settings": {} },
-        "ig_6": { "type": "image", "settings": {} }
+        "ig_1": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig_2": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig_3": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig_4": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig_5": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig_6": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
       },
-      "block_order": ["ig_1", "ig_2", "ig_3", "ig_4", "ig_5", "ig_6"],
+      "block_order": [
+        "ig_1",
+        "ig_2",
+        "ig_3",
+        "ig_4",
+        "ig_5",
+        "ig_6"
+      ],
       "settings": {
         "kicker": "FOLLOW US ON INSTAGRAM",
-        "handle": "@zivora.ornaments"
+        "handle": "@zivora.ornaments",
+        "profile_url": ""
+      }
+    },
+    "collection_selection_ttPhec": {
+      "type": "collection-selection",
+      "name": "Selected Collection",
+      "settings": {
+        "collection-id": "frontpage"
       }
     }
   },
@@ -184,6 +312,7 @@
     "zivora_bestsellers",
     "zivora_banners",
     "zivora_testimonials",
-    "zivora_instagram"
+    "zivora_instagram",
+    "collection_selection_ttPhec"
   ]
 }
