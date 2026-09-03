@@ -10,10 +10,15 @@ Product link {% endcomment %}
 
 
 {% for product in collection.products %}
+    <br>
     {{ product.image }}
+    <br>
     {{ product.title }}
+    <br>
     {{ product.price }}
+    <br>
     {{ product.url }}
+    <br>
 
 {% endfor %}
 
