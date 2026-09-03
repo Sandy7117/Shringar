@@ -1,0 +1,39 @@
+{% comment %} Build a Shopify section that displays a selected collection's products.
+The merchant should be able to select the collection and choose how many products to display.
+Each product should show:
+Image
+Title
+Price
+Product link {% endcomment %}
+
+{% assign collection = section.settings.collection-id %}
+
+
+{% for product in collection.products %}
+    {{ product.image }}
+    {{ product.title }}
+    {{ product.price }}
+    {{ product.url }}
+
+{% endfor %}
+
+
+{%  schema  %} 
+
+{
+    "name": "Selected Collection",
+    "settings": [
+        {
+            "type": "collection",
+            "id": "collection-id",
+            "label": "Select a collection"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Selected Collection"
+        }
+    ]
+}
+
+{% endschema %}
